@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "961314330653",
+    "project_id": "mvvmhowlstagram-8ed71",
+    "storage_bucket": "mvvmhowlstagram-8ed71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961314330653:android:e56852d437be5a8b5e4ef4",
+        "android_client_info": {
+          "package_name": "com.howlab.mvvmhowlstagram"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCBi4jmLrr9Wn98eh1OWzeJtDU8cZujyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
