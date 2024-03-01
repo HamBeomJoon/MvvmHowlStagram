@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.howlab.mvvmhowlstagram.login.LoginViewModel" />
+
         <variable
             name="activity"
             type="com.howlab.mvvmhowlstagram.login.LoginActivity" />
@@ -31,59 +33,59 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
                 <EditText
-                    android:text="@={viewModel.id}"
                     android:id="@+id/edittext_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/email" />
+                    android:hint="@string/email"
+                    android:text="@={viewModel.id}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp">
 
                 <EditText
-                    android:text="@={viewModel.password}"
                     android:id="@+id/edittext_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/password" />
+                    android:hint="@string/password"
+                    android:text="@={viewModel.password}" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/edittext_linearlayout"
             android:layout_alignParentBottom="true"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:onClick="@{() -> viewModel.loginWithSignupEmail()}"
                 android:id="@+id/email_login_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:onClick="@{() -> viewModel.loginWithSignupEmail()}"
                 android:text="@string/signin_email" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:onClick="@{() -> activity.findId()}"
                 android:id="@+id/find_id_password_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:onClick="@{() -> activity.findId()}"
                 android:text="@string/find_id_password" />
 
             <androidx.appcompat.widget.AppCompatButton

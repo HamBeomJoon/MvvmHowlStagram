@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.howlab.mvvmhowlstagram.MainActivity
 import com.howlab.mvvmhowlstagram.R
 import com.howlab.mvvmhowlstagram.databinding.ActivityLoginBinding
 
@@ -39,6 +40,11 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(Intent(this, FindIdActivity::class.java))
             }
         }
+        loginViewModel.showMainActivity.observe(this) {
+            if (it) {
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+        }
     }
 
 
@@ -48,11 +54,14 @@ class LoginActivity : AppCompatActivity() {
     }
 
     // 구글 로그인이 성공한 결과값을 받는 함수
-    var googleLoginResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        result ->
+    var googleLoginResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
 
-        val data = result.data
-        val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-        val account = task.getResult(ApiException::class.java)
-    }
+            val data = result.data
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            val account = task.getResult(ApiException::class.java)
+            account.idToken     // 로그인한 사용자 정보를 암호화한 값
+
+
+        }
 }

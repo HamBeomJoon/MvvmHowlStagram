@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.howlab.mvvmhowlstagram.login.InputNumberViewModel" />
     </data>
 
     <RelativeLayout
@@ -26,12 +29,13 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
                 <EditText
+                    android:text="@={viewModel.inputNumber}"
                     android:id="@+id/edittext_phonenumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -39,22 +43,23 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/edittext_linearlayout"
             android:layout_alignParentBottom="true"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatButton
+                android:onClick="@{() -> viewModel.savePhoneNumber()}"
                 android:id="@+id/apply"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -5,6 +5,13 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.howlab.mvvmhowlstagram.login.FindIdViewModel" />
+
+        <variable
+            name="activity"
+            type="com.howlab.mvvmhowlstagram.login.FindIdActivity" />
     </data>
 
     <RelativeLayout
@@ -26,39 +33,41 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
                 <EditText
                     android:id="@+id/edittext_phonenumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/phone_number" />
+                    android:hint="@string/phone_number"
+                    android:text="@={viewModel.phoneNumber}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp">
 
                 <EditText
                     android:id="@+id/edittext_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/email" />
+                    android:hint="@string/email"
+                    android:text="@={viewModel.id}" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/edittext_linearlayout"
             android:layout_alignParentBottom="true"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatButton
@@ -67,21 +76,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:onClick="@{() -> viewModel.findMyId()}"
                 android:text="@string/find_id" />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/find_password_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:onClick="@{() -> viewModel.findMyPassword()}"
                 android:text="@string/find_password" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:layout_marginTop="30dp"
+                android:onClick="@{() -> activity.finish()}"
                 android:id="@+id/dismiss_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginRight="20dp"
                 android:text="@string/close" />
 
