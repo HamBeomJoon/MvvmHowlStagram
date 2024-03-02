@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         ActivityCompat.requestPermissions(
             this,
-            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+            arrayOf(Manifest.permission.READ_MEDIA_IMAGES),
             0
         )
         binding.bottomNavigation.setOnNavigationItemSelectedListener {
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.action_add_photo -> {
                     if (ContextCompat.checkSelfPermission(
                             this,
-                            Manifest.permission.READ_EXTERNAL_STORAGE
+                            Manifest.permission.READ_MEDIA_IMAGES
                         ) == PackageManager.PERMISSION_GRANTED
                     ) {
                         var i = Intent(this, AddPhotoActivity::class.java)
