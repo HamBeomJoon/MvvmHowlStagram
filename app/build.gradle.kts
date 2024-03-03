@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.howlab.mvvmhowlstagram"
-        minSdk = 24
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -34,18 +34,20 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
     }
 }
 
 dependencies {
+    implementation("com.kakao.sdk:v2-all:2.19.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.google.firebase:firebase-storage-ktx:20.3.0")
     implementation("com.google.firebase:firebase-firestore-ktx:24.10.2")
     implementation("com.google.android.gms:play-services-auth:21.0.0")
-    implementation("com.google.firebase:firebase-bom:32.7.2")
-    implementation("com.google.gms:google-services:4.3.13")
+    implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
+    implementation("com.google.firebase:firebase-analytics-ktx:21.5.1")
+    implementation("com.google.gms:google-services:4.4.1")
     implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("androidx.activity:activity-ktx:1.8.2")

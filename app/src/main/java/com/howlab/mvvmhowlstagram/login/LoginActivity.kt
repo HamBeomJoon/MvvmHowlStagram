@@ -1,8 +1,10 @@
 package com.howlab.mvvmhowlstagram.login
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
@@ -13,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.howlab.mvvmhowlstagram.MainActivity
 import com.howlab.mvvmhowlstagram.R
 import com.howlab.mvvmhowlstagram.databinding.ActivityLoginBinding
+import com.kakao.sdk.common.util.Utility
 
 class LoginActivity : AppCompatActivity() {
 
@@ -24,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
         binding.viewModel = loginViewModel
         binding.activity = this
         binding.lifecycleOwner = this
+//        Log.d(TAG, "keyhash : ${Utility.getKeyHash(this)}")
 
         setObserve()
     }

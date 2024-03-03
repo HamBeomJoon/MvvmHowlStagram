@@ -19,7 +19,7 @@ class LoginViewModel : ViewModel() {
     var showFindIdActivity: MutableLiveData<Boolean> = MutableLiveData(false)
     var showMainActivity: MutableLiveData<Boolean> = MutableLiveData(false)
 //    val context = getApplication<Application>().applicationContext
-
+//
 //    init {
 //        var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
 //            .requestIdToken(context.getString(R.string.default_web_client_id))
