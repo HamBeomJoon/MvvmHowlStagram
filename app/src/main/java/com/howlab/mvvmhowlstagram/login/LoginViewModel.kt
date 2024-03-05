@@ -49,10 +49,9 @@ class LoginViewModel : ViewModel() {
                     }
                 }
             }
-//
-//        fun loginGoogle(view: View) {
-//            var i = googleSignInClient.singInIntent
-//            (view.context as? LongActivity)?.googleLoginResult?.launch(i)
-//        }
+    }
+
+    fun loginKakao() {
+
     }
 }
