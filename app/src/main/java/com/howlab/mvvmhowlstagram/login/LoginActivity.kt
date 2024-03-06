@@ -1,24 +1,32 @@
 package com.howlab.mvvmhowlstagram.login
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.howlab.mvvmhowlstagram.MainActivity
 import com.howlab.mvvmhowlstagram.R
 import com.howlab.mvvmhowlstagram.databinding.ActivityLoginBinding
 import com.kakao.sdk.common.KakaoSdk
 import com.kakao.sdk.user.UserApiClient
+import com.google.android.gms.tasks.Task
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var binding: ActivityLoginBinding
+    lateinit var mGoogleSignInClient: GoogleSignInClient
+    lateinit var resultLauncher: ActivityResultLauncher<Intent>
     val loginViewModel: LoginViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +41,24 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         // 카카오 로그인 버튼에 클릭 리스너 설정
         binding.kakaoLoginButton.setOnClickListener(this)
+
+        // ActivityResultLauncher
+        setResultSignUp()
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .requestProfile()
+            .build()
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        with(binding) {
+            googleLoginButton.setOnClickListener {
+                signIn()
+            }
+        }
+
+        setContentView(binding.root)
     }
 
     // 카카오 로그인 처리
@@ -100,5 +126,44 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             account.idToken     // 로그인한 사용자 정보를 암호화한 값
 
         }
+
+    private fun setResultSignUp() {
+        resultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                // 정상적으로 결과가 받아와진다면 조건문 실행
+                if (result.resultCode == Activity.RESULT_OK) {
+                    val task: Task<GoogleSignInAccount> =
+                        GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                    handleSignInResult(task)
+
+                }
+            }
+    }
+
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+        try {
+            val account = completedTask.getResult(ApiException::class.java)
+            val email = account?.email.toString()
+            val familyName = account?.familyName.toString()
+            val givenName = account?.givenName.toString()
+            val displayName = account?.displayName.toString()
+            val photoUrl = account?.photoUrl.toString()
+
+            Log.d("로그인한 유저의 이메일", email)
+            Log.d("로그인한 유저의 성", familyName)
+            Log.d("로그인한 유저의 이름", givenName)
+            Log.d("로그인한 유저의 전체이름", displayName)
+            Log.d("로그인한 유저의 프로필 사진의 주소", photoUrl)
+        } catch (e: ApiException) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.w("failed", "signInResult:failed code=" + e.statusCode)
+        }
+    }
+
+    private fun signIn() {
+        val signInIntent: Intent = mGoogleSignInClient.getSignInIntent()
+        resultLauncher.launch(signInIntent)
+    }
 
 }
