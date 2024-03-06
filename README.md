@@ -2,6 +2,8 @@
 
 ------
 <img width="349" alt="스크린샷 2024-03-06 오후 1 35 57" src="https://github.com/HamBeomJoon/MvvmHowlStagram/assets/37996727/8426c49a-6654-45e0-be22-bf49140395c0">
+<img width="349" alt="스크린샷 2024-03-06 오후 1 41 05" src="https://github.com/HamBeomJoon/MvvmHowlStagram/assets/37996727/6009a42d-4166-4549-8779-92c2434e2e5a">
+<img width="349" alt="스크린샷 2024-03-06 오후 1 40 05" src="https://github.com/HamBeomJoon/MvvmHowlStagram/assets/37996727/96e5b732-5746-4591-a522-6f2f5fe0ecb8">
 
 
 
